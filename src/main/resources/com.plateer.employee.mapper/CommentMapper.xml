@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.plateer.employee.mapper.CommentMapper">
+    <select id="getComment" resultType="com.plateer.employee.vo.Comment">
+        SELECT *
+          FROM comment
+         WHERE boardid = CAST(#{boardId} AS INTEGER)
+         ORDER BY commentId DESC
+    </select>
+
+    <select id="countComment" resultType="Integer">
+        SELECT count(*)
+          FROM comment
+         WHERE boardid = CAST(#{boardId} AS INTEGER)
+    </select>
+
+    <insert id="insertComment">
+        INSERT INTO comment (boardId, writer, content)
+        VALUES (CAST(#{boardId} AS INTEGER ), #{writer}, #{content})
+    </insert>
+
+    <update id="updateComment">
+        UPDATE comment
+           SET content = #{content}, updateDate = NOW()
+         WHERE commentId = CAST(#{commentId} AS INTEGER);
+    </update>
+
+    <delete id="deleteComment">
+        DELETE
+          FROM comment
+         WHERE commentId = CAST(#{commentId} AS INTEGER)
+    </delete>
+</mapper>

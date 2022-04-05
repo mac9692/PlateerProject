@@ -18,40 +18,50 @@
         <td>{{writer}}</td>
         <td>{{title}}</td>
         <td>{{content}}</td>
-        <td>{{registerDate}}</td>
-        <td>{{updateDate}}</td>
+        <td>{{registerDate | dateFormat}}</td>
+        <td>{{updateDate | dateFormat}}</td>
       </tr>
       </tbody>
     </table>
     <button type="button" @click="functionUpdate(boardId)">게시물수정</button>
     <button type="button" @click="functionDelete(boardId)">삭제하기</button>
     <button type="button" @click="functionList">게시물목록</button>
+    <Comment v-bind:boardId="this.boardId"></Comment>
   </div>
 </template>
 
 <script>
+import Comment from "../comment/Comment";
+
 export default {
+  components: {
+    'Comment' : Comment
+  },
+
   data() {
     return {
-      boardId: '',
+      boardId: this.$route.params.boardId,
       writer: '',
       title: '',
       content: '',
       registerDate: '',
-      updateDate: '',
+      updateDate: ''
     }
   },
+
   mounted() {
     this.functionView();
   },
-  methods : {
+
+  methods: {
     functionList() {
       delete this.boardId
       this.$router.push({name: 'BoardList'});
     },
 
     functionUpdate(boardId) {
-      this.$router.push({name: 'BoardUpdate', params: {boardId: boardId}});
+      this.$router.push({name: 'BoardUpdate',
+        params: {boardId: boardId, writer: this.writer, title: this.title, content: this.content}});
     },
 
     functionView() {
@@ -70,9 +80,9 @@ export default {
     },
 
     functionDelete(boardId) {
-      this.$axios.delete('http://localhost/api/board/' + this.$route.params.boardId)
+      this.$axios.delete('http://localhost/api/board/' + boardId)
       .then((response) => {
-        alert("삭제되었습니다.");
+        alert("게시물 번호 " + boardId + " 번 게시물이 삭제되었습니다.");
         this.functionList();
       })
       .catch((error) => {

@@ -14,9 +14,9 @@ public class BoardController {
 
     private final BoardService boardService;
 
-    @GetMapping(value = "")
-    public List<Board> getBoardList(){
-        return boardService.getBoardList();
+    @GetMapping(value = "/{startNumber}/{countNumber}")
+    public List<Board> getBoardList(@PathVariable("startNumber") String startNumber, @PathVariable("countNumber") String countNumber){
+        return boardService.getBoardList(startNumber, countNumber);
     }
 
     @GetMapping(value = "/{boardId}")
@@ -29,9 +29,9 @@ public class BoardController {
         return boardService.insertBoard(writer, title, content);
     }
 
-    @PatchMapping(value = "/{boardId}")
-    public int updateBoard(String writer, String title, String content, @PathVariable String boardId) {
-        return boardService.updateBoard(writer, title, content, boardId);
+    @PostMapping(value = "/update")
+    public int updateBoard(Board board) {
+        return boardService.updateBoard(board);
     }
 
     @DeleteMapping(value = "/{boardId}")

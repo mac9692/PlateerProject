@@ -6,15 +6,15 @@
         <table class="tableInsert">
           <tr>
             <th>작성자</th>
-            <td><input type="text" v-model="writer" ref="writer"></td>
+            <td><input type="text" v-model="writer" ref="writer" placeholder="작성자"></td>
           </tr>
           <tr>
             <th>제목</th>
-            <td><input type="text" v-model="title" ref="title"></td>
+            <td><input type="text" v-model="title" ref="title" placeholder="제목"></td>
           </tr>
           <tr>
             <th>내용</th>
-            <td><textarea v-model="content" ref="content"></textarea></td>
+            <td><textarea v-model="content" ref="content" placeholder="내용"></textarea></td>
           </tr>
           <tr>
             <td><button type="submit">등록하기</button></td>

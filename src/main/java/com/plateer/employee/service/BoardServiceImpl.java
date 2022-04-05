@@ -16,8 +16,8 @@ public class BoardServiceImpl implements BoardService{
     private final BoardMapper boardMapper;
 
     @Override
-    public List<Board> getBoardList() {
-        return boardMapper.getBoardList();
+    public List<Board> getBoardList(String startNumber, String countNumber) {
+        return boardMapper.getBoardList(startNumber, countNumber);
     }
 
     @Override
@@ -32,8 +32,9 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
-    public int updateBoard(String writer, String title, String content, String boardId) {
-        return boardMapper.updateBoard(writer,title,content,boardId);
+    public int updateBoard(Board board) {
+        //TODO validation if fail -> 예외("message")
+        return boardMapper.updateBoard(board);
     }
 
     @Override

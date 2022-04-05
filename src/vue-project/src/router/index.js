@@ -5,6 +5,12 @@ import HelloWorld from "../components/HelloWorld";
 import Insert from "../components/board/Insert";
 import View from "../components/board/View";
 import Update from "../components/board/Update";
+import SignIn from "../components/member/SignIn";
+import SignUp from "../components/member/SignUp";
+import MemberList from "../components/member/MemberList";
+import MemberView from "../components/member/MemberView";
+import MemberUpdate from "../components/member/MemberUpdate";
+
 
 Vue.use(Router);
 
@@ -19,22 +25,47 @@ export default new Router({
     {
       path:'/board',
       name:'BoardList',
-      component:List
+      component: List
     },
     {
       path:'/board',
       name:'BoardInsert',
-      component:Insert
+      component: Insert
     },
     {
       path:'/board/:boardId',
       name:'BoardView',
-      component:View
+      component: View
     },
     {
       path:'/board',
       name:'BoardUpdate',
-      component:Update
+      component: Update
+    },
+    {
+      path:'/signIn',
+      name:'SignIn',
+      component: SignIn
+    },
+    {
+      path:'/signUp',
+      name:'SignUp',
+      component: SignUp
+    },
+    {
+      path:'/member',
+      name:'MemberList',
+      component: MemberList
+    },
+    {
+      path:'/member/:memberId',
+      name: 'MemberView',
+      component: MemberView
+    },
+    {
+      path:'/member',
+      name: 'MemberUpdate',
+      component: MemberUpdate
     }
   ]
 })

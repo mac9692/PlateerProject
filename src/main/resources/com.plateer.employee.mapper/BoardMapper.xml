@@ -7,8 +7,9 @@
     <select id="getBoardList" resultType="com.plateer.employee.vo.Board">
         SELECT *
         FROM board
-        WHERE boardId > 0
-        ORDER BY boardId DESC;
+        ORDER BY boardId DESC
+        OFFSET CAST(#{startNumber} AS INTEGER)
+         FETCH FIRST CAST(#{countNumber} AS INTEGER) ROWS ONLY;
     </select>
 
     <select id="viewBoard" resultType="com.plateer.employee.vo.Board">
@@ -24,8 +25,8 @@
 
     <update id="updateBoard">
         UPDATE board
-           SET writer = #{_writer}, title = #{_title}, content = #{_content}, updateDate = NOW()
-         WHERE boardId = CAST(#{_boardId} AS INTEGER)
+           SET title = #{title}, content = #{content}, updateDate = NOW()
+         WHERE boardId = CAST(#{boardId} AS INTEGER)
     </update>
 
     <delete id="deleteBoard">

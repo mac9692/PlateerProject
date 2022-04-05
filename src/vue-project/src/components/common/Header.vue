@@ -5,8 +5,9 @@
       <ul class="menu">
         <li><router-link :to="{name: 'BoardList'}">게시판</router-link></li>
         <li><a href="/">상품</a></li>
-        <li><a href="/">로그인</a></li>
-        <li><a href="/">회원가입</a></li>
+        <li><router-link :to="{name: 'MemberList'}">회원리스트</router-link></li>
+        <li><router-link :to="{name: 'SignIn'}">로그인</router-link></li>
+        <li><router-link :to="{name: 'SignUp'}">회원가입</router-link></li>
       </ul>
     </div>
   </header>

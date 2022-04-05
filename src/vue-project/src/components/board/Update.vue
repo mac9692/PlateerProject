@@ -1,7 +1,6 @@
 <template>
   <div>
     <h3>게시물 수정</h3>
-    <div class="updateWrap">
       <form @submit.prevent="submitForm">
         <table class="tableUpdate">
           <tr>
@@ -10,37 +9,48 @@
           </tr>
           <tr>
             <th>작성자</th>
-            <td><input type="text" v-model="writer" ref="writer"></td>
+            <td>{{writer}}</td>
           </tr>
           <tr>
             <th>제목</th>
-            <td><input type="text" v-model="title" ref="title"></td>
+            <td><input type="text" v-model="title" ref="title" value="{{title}}"></td>
           </tr>
           <tr>
             <th>내용</th>
-            <td><textarea v-model="content" ref="content"></textarea></td>
-          </tr>
-          <tr>
-            <td><button type="submit">수정하기</button></td>
-            <td><button type="button" @click="functionList">게시물목록</button></td>
+            <td><textarea v-model="content" ref="content" value="{{content}}"></textarea></td>
           </tr>
         </table>
+        <button type="button" @click="functionView">취소</button>
+        <button type="submit">수정하기</button>
+        <button type="button" @click="functionList">게시목록</button>
       </form>
     </div>
-  </div>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      boardId: this.$route.params.boardId
+      boardId: this.$route.params.boardId,
+      writer: this.$route.params.writer,
+      title: this.$route.params.title,
+      content: this.$route.params.content
     }
   },
 
+  /**
+   * TODO 데이터 조회 및 세팅
+   * 1. api.js
+   * 2. MIXIN
+    */
+
   methods: {
     functionList() {
-      this.$router.push({name: 'BoardList', query: this.body});
+      this.$router.push({name: 'BoardList'});
+    },
+
+    functionView() {
+      this.$router.push({name: 'BoardView'});
     },
 
     submitForm: function() {
@@ -50,19 +60,18 @@ export default {
         return;
       }
 
-      const url = 'http://localhost/api/board/'+this.$route.params.boardId;
+      const url = 'http://localhost/api/board/update';
 
       const data  = new FormData();
-      data.append("writer", this.writer);
       data.append("title", this.title);
       data.append("content", this.content);
       data.append("boardId", this.boardId);
 
-      this.$axios.patch(url, data)
+      this.$axios.post(url, data)
       .then((response) => {
         alert("수정되었습니다.");
         console.log((response));
-        this.functionList();
+        this.functionView();
       })
       .catch((error) => {
         console.log(error);
