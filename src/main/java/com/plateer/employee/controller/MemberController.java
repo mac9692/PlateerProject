@@ -30,7 +30,7 @@ public class MemberController {
     }
 
     @PostMapping(value = "")
-    public Integer insertMember(Member member) {
+    public Integer insertMember(@RequestBody Member member) {
         return memberService.insertMember(member);
     }
 

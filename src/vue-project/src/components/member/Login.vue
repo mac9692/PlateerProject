@@ -1,10 +1,10 @@
 <template>
-  <h3>회원가입</h3>
+  <h3>로그인</h3>
 </template>
 
 <script>
 export default {
-  name: "SignUp"
+  name: "Login"
 }
 </script>
 

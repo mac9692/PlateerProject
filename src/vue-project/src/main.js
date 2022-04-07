@@ -15,13 +15,13 @@ Vue.filter('dateFormat', function(value) {
     return '';
   }
 
-  var js_date = new Date(value);
+  let js_date = new Date(value);
 
-  var year = js_date.getFullYear();
-  var month = js_date.getMonth() + 1;
-  var day = js_date.getDate();
-  var hour = js_date.getHours();
-  var minute = js_date.getMinutes();
+  let year = js_date.getFullYear();
+  let month = js_date.getMonth() + 1;
+  let day = js_date.getDate();
+  let hour = js_date.getHours();
+  let minute = js_date.getMinutes();
 
   if(month < 10) {
     month = '0' + month;

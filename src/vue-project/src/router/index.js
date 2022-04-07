@@ -1,15 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import List from "../components/board/List";
-import HelloWorld from "../components/HelloWorld";
 import Insert from "../components/board/Insert";
 import View from "../components/board/View";
 import Update from "../components/board/Update";
-import SignIn from "../components/member/SignIn";
-import SignUp from "../components/member/SignUp";
 import MemberList from "../components/member/MemberList";
 import MemberView from "../components/member/MemberView";
 import MemberUpdate from "../components/member/MemberUpdate";
+import Login from "../components/member/Login";
+import Signup from "../components/member/Signup";
+import Home from "../components/common/Home";
 
 
 Vue.use(Router);
@@ -19,8 +19,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'BoardHelloWorld',
-      component: HelloWorld
+      name: 'Home',
+      component: Home
     },
     {
       path:'/board',
@@ -43,14 +43,14 @@ export default new Router({
       component: Update
     },
     {
-      path:'/signIn',
-      name:'SignIn',
-      component: SignIn
+      path:'/login',
+      name:'Login',
+      component: Login
     },
     {
-      path:'/signUp',
-      name:'SignUp',
-      component: SignUp
+      path:'/signup',
+      name:'Signup',
+      component: Signup
     },
     {
       path:'/member',
