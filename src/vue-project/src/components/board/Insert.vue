@@ -28,6 +28,12 @@
 
 <script>
 export default {
+  data: {
+    writer: '',
+    title: '',
+    content: ''
+  },
+
   methods : {
     functionList() {
       this.$router.push({name: 'BoardList', query: this.body});

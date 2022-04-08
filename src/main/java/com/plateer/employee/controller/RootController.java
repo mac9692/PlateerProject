@@ -9,6 +9,6 @@ public class RootController implements ErrorController {
 
     @GetMapping({"/", "/error"})
     public String getIndex() {
-        return "index";
+        return "/index";
     }
 }

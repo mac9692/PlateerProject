@@ -3,6 +3,8 @@ package com.plateer.employee.controller;
 import com.plateer.employee.service.MemberService;
 import com.plateer.employee.vo.Member;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -44,5 +46,14 @@ public class MemberController {
         return memberService.deleteMember(memberId);
     }
 
+//    @GetMapping(value = "/username")
+//    public String currentUserName(Principal principal) {
+//        return principal.getName();
+//    }
 
+    @GetMapping(value = "/username")
+    public String currentUserName(Authentication authentication) {
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        return userDetails.getUsername();
+    }
 }

@@ -4,9 +4,9 @@
     <div class="menuWrap">
       <ul class="menu">
         <li><router-link :to="{name: 'BoardList'}">게시판</router-link></li>
-        <li><a href="/">상품</a></li>
         <li><router-link :to="{name: 'MemberList'}">회원리스트</router-link></li>
         <li><router-link :to="{name: 'Login'}">로그인</router-link></li>
+        <li><a href="/logout">로그아웃</a></li>
         <li><router-link :to="{name: 'Signup'}">회원가입</router-link></li>
       </ul>
     </div>

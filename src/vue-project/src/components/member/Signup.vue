@@ -5,7 +5,7 @@
     <div>
       <h3>아이디</h3>
       <div>
-        <input v-model="signup.email" type="text" maxlength="30" placeholder="아이디를 입력하세요." @blur="emailValid">
+        <input v-model="signup.email" type="email" maxlength="30" placeholder="아이디를 입력하세요." @blur="emailValid">
         <br>
         <span class="error" v-if="!emailValidValue">
           아이디 형식이 맞지 않습니다.
